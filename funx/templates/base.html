@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funx</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <style>
+        .resultat {
+            float: right;
+            background: rgb(163, 163, 163);
+            width: 50%;
+            padding-left: 20px;
+            height: 100%;
+            padding-top: 100px;
+        }
+
+        .entrada {
+            float: left;
+            width: 50%;
+            background: rgb(188, 185, 185);
+            position: relative;
+            padding-left: 20px;
+            height: 100%;
+        }
+
+        .funcio {
+            background: rgb(188, 185, 185);
+            position: relative;
+            top: 100px;
+
+        }
+
+        .input {
+            position: absolute;
+            top: 500px;
+        }
+
+        textarea {
+            width: 700px;
+            height: 200px;
+            min-width: 700px;
+            min-height: 200px;
+        }
+    </style>
+    <div class="entrada">
+        <div class="funcio">
+            <h1 style=" color:orange ">Funcions:</h1>
+            {% for key in funciones %}
+            <h5>
+                <li>{{funciones[key]}}</li>
+            </h5>
+            {% endfor %}
+        </div>
+        <div class="input">
+            <h1 style=" color:blue ">Consola:</h1>
+            <form action="{{url_for('resultat')}}" method="POST">
+                <textarea name="consola" id="consola" cols="30" rows="10"></textarea> <br>
+                <button type="submit" class="btn btn-primary btn-block">submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="resultat">
+        <h1 style=" color:green ">Resultat:</h1>
+        <br>
+        <br>
+        {% for cont, in, out in operacio %}
+        <h4>
+            <strong> In {{cont}}: </strong>{{in}} <br>
+            <br>
+            <strong> Out {{cont}}: </strong>{{out}}<br>
+            <br>
+        </h4>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
